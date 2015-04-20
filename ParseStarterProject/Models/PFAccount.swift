@@ -17,7 +17,7 @@ class PFAccount : PFUser, PFSubclassing {
         self.registerSubclass()
     }
     
-    override class func parseClassName() -> String! {
+    override class func parseClassName() -> String {
         return "PFAccount"
     }
 

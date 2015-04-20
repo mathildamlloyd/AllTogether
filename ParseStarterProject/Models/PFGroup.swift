@@ -11,16 +11,35 @@ import Parse
 
 class PFGroup : PFObject, PFSubclassing {
     
-    @NSManaged var radius : Double;
-    @NSManaged var members : [PFAccount];
-    @NSManaged var leader : PFAccount;
+    @NSManaged var name : String
+    @NSManaged var radius : Double
+    @NSManaged var leader : PFUser
+    @NSManaged var members : [PFUser]
     
     override class func initialize() {
         self.registerSubclass()
     }
     
-    class func parseClassName() -> String! {
-        return "PFGroup";
+    class func parseClassName() -> String {
+        return "PFGroup"
+    }
+    
+    // add member to the group
+    func addMember(member: PFUser) {
+        if self["members"] == nil {
+            self["members"] = []
+        }
+        members.append(member)
+    }
+    
+    // remove member from the group
+    func removeMember(member: PFUser) {
+        if self["members"] == nil {
+            self["members"] = []
+        }
+        if let index = find(self.members, member) {
+            self.members.removeAtIndex(index)
+        }
     }
     
     

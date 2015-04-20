@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable storing and querying data from Local Datastore. 
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
-        PFAccount.registerSubclass()
-        PFGroup.registerSubclass()
+//        PFAccount.registerSubclass()
+//        PFGroup.registerSubclass()
         Parse.setApplicationId("orUHeFM73IWJgW0IvLoM6JHjBF9mV1CndS1VOJVr",
             clientKey: "vBu4fRQpuyoq7fbeUuvKfz1Z8mqW3ATs5HZLpBfs")
 
@@ -52,8 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // If you would like all objects to be private by default, remove this line.
         defaultACL.setPublicReadAccess(true)
+        
 
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser:true)
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
 
         if application.applicationState != UIApplicationState.Background {
             // Track an app open here if we launch with a push, unless
@@ -92,13 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
         
-        PFPush.subscribeToChannelInBackground("", block: { (succeeded: Bool, error: NSError!) -> Void in
-            if succeeded {
-                println("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
-            } else {
-                println("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
-            }
-        })
+//        PFPush.subscribeToChannelInBackground("", block: { (succeeded: Bool, error: NSError!) -> Void in
+//            if succeeded {
+//                println("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
+//            } else {
+//                println("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
+//            }
+//        })
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
